@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <div ref="canvas"></div>
+    <div ref="canvas" class="canvas_container"></div>
     <button class="button is-warning is-large" @click="clickArrow(-1, 0)">⇦</button>
     <button class="button is-warning is-large" @click="clickArrow(0, -1)">⇧</button>
     <button class="button is-warning is-large" @click="clickArrow(0, 1)">⇩</button>
@@ -26,7 +26,7 @@ export default {
   mounted () {
     this.script = p => {
       p.setup = _ => {
-        this.canvas = p.createCanvas(p.windowWidth, p.windowHeight - 100)
+        this.canvas = p.createCanvas(window.innerWidth - 20, window.innerHeight - 100)
         this.canvas.parent(this.$refs.canvas)
         this.s = new Snake(p)
         p.frameRate(10)
@@ -36,40 +36,50 @@ export default {
         p.background(0)
         // 畫格線
         p.push()
-        let cols = p.floor(p.width / this.scl)
-        let rows = p.floor(p.height / this.scl)
-        p.stroke(100)
-        for (let i = 0; i < cols; i++) {
-          p.line(i * this.scl, 0, i * this.scl, p.height)
+        p.cols = p.floor(p.width / this.scl)
+        p.rows = p.floor(p.height / this.scl)
+        p.stroke(50)
+        for (let i = 1; i <= p.cols; i++) {
+          p.line(i * this.scl, 0, i * this.scl, this.scl * p.rows)
         }
-        for (let j = 0; j < rows; j++) {
-          p.line(0, j * this.scl, p.width, j * this.scl)
+        for (let j = 1; j <= p.rows; j++) {
+          p.line(0, j * this.scl, this.scl * p.cols, j * this.scl)
         }
         p.pop()
 
-        this.s.update()
-        this.s.show()
-        this.s.death()
-
+        // 處理食物
         if (this.s.eat(this.food)) {
           p.pickLocation()
         }
-
-        p.fill(255, 0, 100)
+        p.fill('rgba(208, 2, 27,1)')
         p.rect(this.food.x, this.food.y, this.scl, this.scl)
-      }
+
+        // 處理蛇
+        this.s.update()
+        this.s.show()
+        this.s.death()
+      } // end draw
+
       p.pickLocation = () => {
         let cols = p.floor(p.width / this.scl)
         let rows = p.floor(p.height / this.scl)
         this.food = p.createVector(p.floor(p.random(cols)), p.floor(p.random(rows)))
         this.food.mult(this.scl)
+        // 指定食物在旁邊 方便debug
+        // this.food = {
+        //   x: 3 * this.scl,
+        //   y: 0
+        // }
       }
-      p.keyPressed = () => {
+      p.keyPressed = (e) => {
         if (p.keyCode === p.LEFT_ARROW) this.s.dir(-1, 0)
         else if (p.keyCode === p.RIGHT_ARROW) this.s.dir(1, 0)
         else if (p.keyCode === p.UP_ARROW) this.s.dir(0, -1)
         else if (p.keyCode === p.DOWN_ARROW) this.s.dir(0, 1)
-        else console.log('err', p.keyCode)
+        else if (p.keyCode === 32) { // 按 space 直接變長
+          this.s.total++
+          this.s.update()
+        } else { console.log('err', p.keyCode) }
       }
     }
     this.ps = new P5(this.script)

@@ -42,13 +42,15 @@ class Snake {
     }
     this.x += this.xspeed * scl
     this.y += this.yspeed * scl
-    this.x = this.p5.constrain(this.x, 0, this.p5.width - scl)
-    this.y = this.p5.constrain(this.y, 0, this.p5.height - scl)
+    this.x = this.p5.constrain(this.x, 0, scl * this.p5.cols - scl)
+    this.y = this.p5.constrain(this.y, 0, scl * this.p5.rows - scl)
   }
   show () {
-    this.p5.fill(255)
+    this.p5.fill('rgba(248, 231, 28,1)')
     this.p5.rect(this.x, this.y, scl, scl)
     for (let i = 0; i < this.tail.length; i++) {
+      let alpha = this.p5.map(i, 0, this.tail.length, 0.2, 0.9)
+      this.p5.fill(`rgba(248, 231, 28,${alpha})`)
       this.p5.rect(this.tail[i].x, this.tail[i].y, scl, scl)
     }
   }
