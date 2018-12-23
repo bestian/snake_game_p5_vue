@@ -48,6 +48,7 @@ class Snake {
   show () {
     this.p5.fill('rgba(248, 231, 28,1)')
     this.p5.rect(this.x, this.y, scl, scl)
+    this.p5.noStroke()
     for (let i = 0; i < this.tail.length; i++) {
       let alpha = this.p5.map(i, 0, this.tail.length, 0.2, 0.9)
       this.p5.fill(`rgba(248, 231, 28,${alpha})`)
