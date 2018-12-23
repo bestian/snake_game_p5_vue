@@ -39,10 +39,10 @@ export default {
         p.cols = p.floor(p.width / this.scl)
         p.rows = p.floor(p.height / this.scl)
         p.stroke(50)
-        for (let i = 1; i <= p.cols; i++) {
+        for (let i = 0; i <= p.cols; i++) {
           p.line(i * this.scl, 0, i * this.scl, this.scl * p.rows)
         }
-        for (let j = 1; j <= p.rows; j++) {
+        for (let j = 0; j <= p.rows; j++) {
           p.line(0, j * this.scl, this.scl * p.cols, j * this.scl)
         }
         p.pop()
@@ -94,5 +94,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
+.canvas_container{
+  display: flex;
+  justify-content: center;
+  background-color: black;
+  padding-top:10px;
+}
 </style>
