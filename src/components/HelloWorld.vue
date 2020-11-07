@@ -5,6 +5,7 @@
     <button class="button is-warning is-large" @click="clickArrow(0, -1)">⇧</button>
     <button class="button is-warning is-large" @click="clickArrow(0, 1)">⇩</button>
     <button class="button is-warning is-large" @click="clickArrow(1, 0)">⇨</button>
+    <span class="button is-warning is-large"> 目前 {{ s.total }} 分 </span>
   </div>
 </template>
 
@@ -94,10 +95,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.canvas_container{
+.canvas_container {
   display: flex;
   justify-content: center;
   background-color: black;
   padding-top:10px;
 }
+
 </style>
