@@ -5,7 +5,7 @@
     <button class="button is-warning is-large" @click="clickArrow(0, -1)">⇧</button>
     <button class="button is-warning is-large" @click="clickArrow(0, 1)">⇩</button>
     <button class="button is-warning is-large" @click="clickArrow(1, 0)">⇨</button>
-    <span class="button is-warning is-large"> 目前 {{ s.total }} 分 </span>
+    <span class="button is-warning is-large"> 目前 {{ s && s.total }} 分 </span>
   </div>
 </template>
 
