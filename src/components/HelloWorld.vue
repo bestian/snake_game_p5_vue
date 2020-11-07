@@ -37,9 +37,9 @@ export default {
         p.background(0)
         // 畫格線
         p.push()
-        p.cols = p.floor(p.width / this.scl)
+        p.cols = p.floor(400 / this.scl)
         p.rows = p.floor(p.height / this.scl)
-        p.stroke(50)
+        p.stroke(70)
         for (let i = 0; i <= p.cols; i++) {
           p.line(i * this.scl, 0, i * this.scl, this.scl * p.rows)
         }
@@ -62,7 +62,7 @@ export default {
       } // end draw
 
       p.pickLocation = () => {
-        let cols = p.floor(p.width / this.scl)
+        let cols = p.floor(400 / this.scl)
         let rows = p.floor(p.height / this.scl)
         this.food = p.createVector(p.floor(p.random(cols)), p.floor(p.random(rows)))
         this.food.mult(this.scl)
