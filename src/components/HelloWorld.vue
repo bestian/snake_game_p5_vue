@@ -51,8 +51,8 @@ export default {
         if (this.s.eat(this.food)) {
           p.pickLocation()
         }
-        p.fill('rgba(208, 2, 27,1)')
-        p.rect(this.food.x, this.food.y, this.scl, this.scl)
+        p.fill('rgba(0, 255, 0, 1)')
+        p.circle(this.food.x + this.scl / 2, this.food.y + this.scl / 2, this.scl / 2)
 
         // 處理蛇
         this.s.update()
