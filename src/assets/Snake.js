@@ -46,7 +46,7 @@ class Snake {
     this.y = this.p5.constrain(this.y, 0, scl * this.p5.rows - scl)
   }
   show () {
-    this.p5.fill('rgba(248, 231, 28,1)')
+    this.p5.fill('rgba(245, 125, 20, 1)')
     this.p5.rect(this.x, this.y, scl, scl)
     this.p5.noStroke()
     for (let i = 0; i < this.tail.length; i++) {
