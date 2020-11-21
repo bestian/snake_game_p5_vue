@@ -106,7 +106,39 @@ export default {
   position: fixed;
   top: 33vh;
   left: 33vw;
+  opacity: 0.4;
+}
+
+#up {
+  position: fixed;
+  top: 0;
+  left: 30vw;
   opacity: 0.8;
+  width: 40vw;
+}
+
+#down {
+  position: fixed;
+  bottom: 0;
+  left: 30vw;
+  opacity: 0.8;
+  width: 40vw;
+}
+
+#left {
+  position: fixed;
+  top: 40vh;
+  left: 0;
+  opacity: 0.8;
+  height: 20vh;
+}
+
+#right {
+  position: fixed;
+  top: 40vh;
+  right: 0;
+  opacity: 0.8;
+  height: 20vh;
 }
 
 </style>
