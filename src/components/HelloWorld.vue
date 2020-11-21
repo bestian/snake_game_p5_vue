@@ -52,7 +52,7 @@ export default {
         if (this.s.eat(this.food)) {
           p.pickLocation()
         }
-        p.fill('rgba(0, 255, 0, 1)')
+        p.fill('rgba(235, 0, 0, 1)')
         p.circle(this.food.x + this.scl / 2, this.food.y + this.scl / 2, this.scl / 2)
 
         // 處理蛇
