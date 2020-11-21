@@ -5,7 +5,7 @@
     <button id="up" class="button is-warning is-large" @click="clickArrow(0, -1)">⇧</button>
     <button id="down" class="button is-warning is-large" @click="clickArrow(0, 1)">⇩</button>
     <button id="right" class="button is-warning is-large" @click="clickArrow(1, 0)">⇨</button>
-    <span id ="score"class="button is-warning is-large"> 目前 {{ s && s.total }} 分 </span>
+    <span id ="score" class="button is-warning is-large"> 目前 {{ s && s.total }} 分 </span>
   </div>
 </template>
 
@@ -51,7 +51,7 @@ export default {
         p.pop()
 
         // 處理食物
-        if (this.s.eat(this.food) || this.time == 100) {
+        if (this.s.eat(this.food) || this.time === 100) {
           this.time = 0
           p.pickLocation()
         }
