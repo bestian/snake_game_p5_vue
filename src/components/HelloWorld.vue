@@ -5,7 +5,7 @@
     <button class="button is-warning is-large" @click="clickArrow(0, -1)">⇧</button>
     <button class="button is-warning is-large" @click="clickArrow(0, 1)">⇩</button>
     <button class="button is-warning is-large" @click="clickArrow(1, 0)">⇨</button>
-    <span class="button is-warning is-large"> 目前 {{ s && s.total }} 分 </span>
+    <span id ="score" class="button is-warning is-large"> 目前 {{ s && s.total }} 分 </span>
   </div>
 </template>
 
@@ -100,6 +100,13 @@ export default {
   justify-content: center;
   background-color: black;
   padding-top:10px;
+}
+
+#score {
+  position: fixed;
+  top: 33vh;
+  left: 33vw;
+  opacity: 0.8;
 }
 
 </style>
