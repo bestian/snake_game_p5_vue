@@ -1,11 +1,11 @@
 <template>
   <div class="hello">
     <div ref="canvas" class="canvas_container"></div>
-    <button class="button is-warning is-large" @click="clickArrow(-1, 0)">⇦</button>
-    <button class="button is-warning is-large" @click="clickArrow(0, -1)">⇧</button>
-    <button class="button is-warning is-large" @click="clickArrow(0, 1)">⇩</button>
-    <button class="button is-warning is-large" @click="clickArrow(1, 0)">⇨</button>
-    <span class="button is-warning is-large"> 目前 {{ s && s.total }} 分 </span>
+    <button id="left" class="button is-warning is-large" @click="clickArrow(-1, 0)">⇦</button>
+    <button id="up" class="button is-warning is-large" @click="clickArrow(0, -1)">⇧</button>
+    <button id="down" class="button is-warning is-large" @click="clickArrow(0, 1)">⇩</button>
+    <button id="right" class="button is-warning is-large" @click="clickArrow(1, 0)">⇨</button>
+    <span id ="score"class="button is-warning is-large"> 目前 {{ s && s.total }} 分 </span>
   </div>
 </template>
 
@@ -37,7 +37,7 @@ export default {
         p.background(0)
         // 畫格線
         p.push()
-        p.cols = p.floor(400 / this.scl)
+        p.cols = p.floor(p.width / this.scl)
         p.rows = p.floor(p.height / this.scl)
         p.stroke(70)
         for (let i = 0; i <= p.cols; i++) {
@@ -52,7 +52,7 @@ export default {
         if (this.s.eat(this.food)) {
           p.pickLocation()
         }
-        p.fill('rgba(0, 255, 0, 1)')
+        p.fill('rgba(235, 0, 0, 1)')
         p.circle(this.food.x + this.scl / 2, this.food.y + this.scl / 2, this.scl / 2)
 
         // 處理蛇
@@ -62,7 +62,7 @@ export default {
       } // end draw
 
       p.pickLocation = () => {
-        let cols = p.floor(400 / this.scl)
+        let cols = p.floor(p.width / this.scl)
         let rows = p.floor(p.height / this.scl)
         this.food = p.createVector(p.floor(p.random(cols)), p.floor(p.random(rows)))
         this.food.mult(this.scl)
@@ -100,6 +100,45 @@ export default {
   justify-content: center;
   background-color: black;
   padding-top:10px;
+}
+
+#score {
+  position: fixed;
+  top: 33vh;
+  left: 33vw;
+  opacity: 0.4;
+}
+
+#up {
+  position: fixed;
+  top: 0;
+  left: 30vw;
+  opacity: 0.8;
+  width: 40vw;
+}
+
+#down {
+  position: fixed;
+  bottom: 0;
+  left: 30vw;
+  opacity: 0.8;
+  width: 40vw;
+}
+
+#left {
+  position: fixed;
+  top: 40vh;
+  left: 0;
+  opacity: 0.8;
+  height: 20vh;
+}
+
+#right {
+  position: fixed;
+  top: 40vh;
+  right: 0;
+  opacity: 0.8;
+  height: 20vh;
 }
 
 </style>
