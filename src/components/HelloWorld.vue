@@ -76,10 +76,10 @@ export default {
         // }
       }
       p.keyPressed = (e) => {
-        if (p.keyCode === p.LEFT_ARROW) this.s.dir(-1, 0)
-        else if (p.keyCode === p.RIGHT_ARROW) this.s.dir(1, 0)
-        else if (p.keyCode === p.UP_ARROW) this.s.dir(0, -1)
-        else if (p.keyCode === p.DOWN_ARROW) this.s.dir(0, 1)
+        if (p.keyCode === p.LEFT_ARROW || p.keyCode === 37) this.s.dir(-1, 0)
+        else if (p.keyCode === p.RIGHT_ARROW || p.keyCode === 39) this.s.dir(1, 0)
+        else if (p.keyCode === p.UP_ARROW || p.keyCode === 38) this.s.dir(0, -1)
+        else if (p.keyCode === p.DOWN_ARROW || p.keyCode === 40) this.s.dir(0, 1)
         else if (p.keyCode === 32) { // 按 space 直接變長
           this.s.total++
           this.s.update()
