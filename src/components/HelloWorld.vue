@@ -1,10 +1,10 @@
 <template>
   <div class="hello">
     <div ref="canvas" class="canvas_container"></div>
-    <button class="button is-warning is-large" @click="clickArrow(-1, 0)">⇦</button>
-    <button class="button is-warning is-large" @click="clickArrow(0, -1)">⇧</button>
-    <button class="button is-warning is-large" @click="clickArrow(0, 1)">⇩</button>
-    <button class="button is-warning is-large" @click="clickArrow(1, 0)">⇨</button>
+    <button id="left" class="button is-warning is-large" @click="clickArrow(-1, 0)">⇦</button>
+    <button id="up" class="button is-warning is-large" @click="clickArrow(0, -1)">⇧</button>
+    <button id="down" class="button is-warning is-large" @click="clickArrow(0, 1)">⇩</button>
+    <button id="right" class="button is-warning is-large" @click="clickArrow(1, 0)">⇨</button>
     <span class="button is-warning is-large"> 目前 {{ s && s.total }} 分 </span>
   </div>
 </template>
