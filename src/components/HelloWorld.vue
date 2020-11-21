@@ -21,10 +21,12 @@ export default {
       canvas: null,
       s: null, // snake
       scl: 20,
-      food: null
+      food: null,
+      time: 0
     }
   },
   mounted () {
+    setInterval(this.go, 100)
     this.script = p => {
       p.setup = _ => {
         this.canvas = p.createCanvas(window.innerWidth - 20, window.innerHeight - 100)
@@ -49,7 +51,8 @@ export default {
         p.pop()
 
         // 處理食物
-        if (this.s.eat(this.food)) {
+        if (this.s.eat(this.food) || this.time == 100) {
+          this.time = 0
           p.pickLocation()
         }
         p.fill('rgba(235, 0, 0, 1)')
@@ -88,6 +91,9 @@ export default {
   methods: {
     clickArrow (x, y) {
       this.s.dir(x, y)
+    },
+    go () {
+      this.time++
     }
   }
 }
